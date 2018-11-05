@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.arirus.versioncomp">
+
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+  <application
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launchers"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme"
+      tools:ignore="GoogleAppIndexingWarning">
+    <activity
+        android:name=".MainActivity"
+        android:parentActivityName=".noti.Main2Activity">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".noti.Main2Activity"/>
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+      <!-- </intent-filter> -->
+    </activity>
+
+    <service
+        android:name=".bg.BackgroundService"
+        android:enabled="true"
+        android:exported="false">
+    </service>
+    <service
+        android:name=".bg.BackIntentService"
+        android:enabled="true"
+        android:exported="false">
+    </service>
+    <service
+        android:name=".bg.BackJobIntentService"
+        android:enabled="true"
+        android:exported="false"
+        android:permission="android.permission.BIND_JOB_SERVICE">
+    </service>
+
+    <activity android:name=".noti.NotiActivity">
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+      <!-- </intent-filter> -->
+    </activity>
+    <activity android:name=".noti.Main2Activity">
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+      <!-- </intent-filter> -->
+    </activity>
+    <activity android:name=".file.CameraActivity">
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="cn.arirus.SHARE"/> -->
+      <!-- <action android:name="android.intent.action.MAIN"/> -->
+      <!-- &lt;!&ndash; <data android:mimeType="image/png" /> &ndash;&gt; -->
+      <!-- <data android:scheme="http"/> -->
+      <!-- <data android:scheme="ftp"/> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+      <!-- <category android:name="android.intent.category.DEFAULT"/> -->
+      <!-- </intent-filter> -->
+
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+      <!-- </intent-filter> -->
+    </activity>
+
+    <provider
+        android:name="android.support.v4.content.FileProvider"
+        android:authorities="${applicationId}.fileProvider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+      <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/file_path"/>
+    </provider>
+
+    <activity android:name=".bg.ServiceActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+
+    <service
+        android:name=".bg.BackRemoteService"
+        android:process=":remote"
+        android:enabled="true"
+        android:exported="true">
+    </service>
+
+    <service android:name=".bg.CustomJobScheduler"
+      android:permission="android.permission.BIND_JOB_SERVICE"
+      android:exported="true"/>
+  </application>
+
+</manifest>
