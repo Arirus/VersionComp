@@ -62,7 +62,6 @@ public class ServiceActivity extends AppCompatActivity {
     setContentView(R.layout.activity_service);
     mButton = findViewById(R.id.btn_service);
     mTxt = findViewById(R.id.ttt);
-    Binder
     mButton.setOnClickListener(v -> {
       //JobScheduler jobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
       //index++;
